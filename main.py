@@ -1,4 +1,5 @@
 # main.py
+from processador import media_idade, extremos_idade, contar_por_cidade
 
 clientes = [
     {"id": 1, "nome": "João Silva", "email": "joao.silva@email.com",
@@ -23,3 +24,14 @@ for cliente in clientes:
 for cidade, qtde in cidades.itens():
         pessoas = [cliente('nome') for cliente in clientes if cliente['cidade'] == cidade]
         print(f"(cidade)) ({qtde}): {','.join(pessoas)}")
+
+media = media_idade(clientes)
+minimo, maximo = extremos_idade(clientes)
+
+print(f"Clientes carregados: {len(clientes)}")
+print(f"Média de idade: {media:.1f}")
+print(f"Faixa de idade: {minimo} – {maximo}")
+print()
+print("Clientes por cidade:")
+for cidade, total in contar_por_cidade(clientes).items():
+    print(f"  {cidade}: {total}")
